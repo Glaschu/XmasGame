@@ -48,7 +48,6 @@
      <Compile Include="Assets\Scripts\CameraMoveScript.cs" />
      <Compile Include="Assets\Scripts\ControlScript.cs" />
      <Compile Include="Assets\Scripts\DestroyerScript.cs" />
-     <Compile Include="Assets\Scripts\DetectorScript.cs" />
      <Compile Include="Assets\Scripts\DropScript.cs" />
      <Compile Include="Assets\Scripts\HouseScript.cs" />
      <Compile Include="Assets\Scripts\MovementScript.cs" />

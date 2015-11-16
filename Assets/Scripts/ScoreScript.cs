@@ -25,7 +25,7 @@ public class ScoreScript : MonoBehaviour {
 	void HappinessLevel(){
 		if (presentScore > 0) {
 			happiness = (presentScore / (presentScore + presentMissed))*100;
-			Debug.Log(happiness);
+
 		}
 	}
 }
