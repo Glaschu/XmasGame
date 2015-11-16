@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class PresentCounter : MonoBehaviour {
-	public bool presentHitCounter;
+
 	public int presentMissing =0;
-	public int presentHit =0;
+	public int presentHit =1;
 	// Use this for initialization
 	void Start () {
 	
@@ -24,8 +24,7 @@ public class PresentCounter : MonoBehaviour {
 				presentHit++;
 			}
 		}
-		//presentHitCounter=other.gameObject.GetComponent<HouseScript>().presentHit;
-			
+
 		
 	}
 }

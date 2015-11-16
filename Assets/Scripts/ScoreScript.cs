@@ -3,21 +3,29 @@ using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
 
-	static public int presentScore=1;
-	static public int presentMissed=0;
-	public int happiness=0;
+	public float presentScore=1;
+	public float presentMissed=0;
+	public float happiness;
+	public GameObject presentCounter;
+	public PresentCounter presentCount;
 	// Use this for initialization
 	void Start () {
-	
+		presentCounter = GameObject.Find("PressentHit");
+		presentCount=GetComponent<PresentCounter>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log (presentMissed);
+
+		presentScore = presentCounter.gameObject.GetComponent<PresentCounter> ().presentHit;
+		presentMissed = presentCounter.gameObject.GetComponent<PresentCounter> ().presentMissing;
 		HappinessLevel ();
 	}
 
 	void HappinessLevel(){
-		happiness = presentScore / (presentScore + presentMissed);
+		if (presentScore > 0) {
+			happiness = (presentScore / (presentScore + presentMissed))*100;
+			Debug.Log(happiness);
+		}
 	}
 }
