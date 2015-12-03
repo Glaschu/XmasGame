@@ -4,25 +4,43 @@ using System.Collections;
 public class DropScript : MonoBehaviour {
 	public GameObject[] obj;
 	private ControlScript Controls;
-	int drop =0;
+	public int drop =0;
+	public Transform dropPoint;
+
+	public float dropTime;
+	bool canDrop = false;
+	float _canDrop;
 	
 	// Use this for initialization
 	void Start () {
 		Controls= GetComponent<ControlScript>();
 	}
-	
+
+	void Awake()
+	{
+		_canDrop = dropTime;
+	}
 	// Update is called once per frame
 	void Update () {
-		if (Controls.MovePlayer.x > 0) {
-			drop=0;
-			Spawn ();
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			Spawn();
 		}
+		dropTime -= Time.deltaTime;
+		if(dropTime <= 0)
+		{
+			canDrop = true;
+		}
+
 	}
 
-	void Spawn () {
-		if (drop == 0) {
-			drop=1;
-			Instantiate (obj [Random.Range (0, 1)], new Vector3 (transform.position.x, transform.position.y - 1, 0), Quaternion.identity);
+	public void Spawn()
+	{
+		if(canDrop)
+		{
+			GameObject present = Instantiate(obj[0], new Vector3(dropPoint.position.x, dropPoint.position.y, dropPoint.position.z), Quaternion.identity) as GameObject;
+			canDrop = false;
+			dropTime = _canDrop;
 		}
 	}
 }

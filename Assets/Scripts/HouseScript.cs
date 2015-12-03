@@ -4,6 +4,8 @@ using System.Collections;
 public class HouseScript : MonoBehaviour {
 	public GameObject player;
 	public bool presentHit=false;
+
+	public float speed = 3.0f; 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
@@ -11,26 +13,7 @@ public class HouseScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transform.Translate(-Vector2.right * Time.deltaTime * speed);
+	}
 	
-	}
-	void OnTriggerEnter2D(Collider2D other){
-		
-		if (other.tag == "Player") {
-			
-			//Destroy (other.gameObject);
-		} else if (other.tag == "Presents"){
-			presentHit=true;
-			//ScoreScript.presentScore++;
-			Destroy (other.gameObject);
-		}
-	}
-
-	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Player") {
-			player.gameObject.GetComponent<MovementScript> ().speed = 0.0f;
-		}
-		if (coll.gameObject.tag == "Presents") {
-			Destroy (coll.gameObject);
-		}
-	}
 }
